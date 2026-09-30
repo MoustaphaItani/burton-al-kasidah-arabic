@@ -1,0 +1,47 @@
+% !TeX program = xelatex
+% Main document for Overleaf. Compile with XeLaTeX.
+\documentclass[12pt,a4paper]{article}
+\input{preamble}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+  \centering
+  \vspace*{2.0cm}
+  {\fontsize{32}{44}\selectfont\bfseries قصيدة الحاج عبدو اليزدي\par}
+  \vspace{0.55cm}
+  {\fontsize{22}{32}\selectfont أنشودة الناموس الأعلى\par}
+  \vspace{1.3cm}
+  {\fontsize{19}{28}\selectfont ريتشارد فرانسيس برتون\par}
+  \vspace{1.6cm}
+  {\Large ترجمة عربية أولية\par}
+  \vspace{0.4cm}
+  {أعدّتها \textenglish{ChatGPT / OpenAI}\par}
+  \vfill
+  {٣٠ أيلول ٢٠٢٦\par}
+\end{titlepage}
+\pagenumbering{arabic}
+\hypersetup{pageanchor=true}
+
+\input{content/credit}
+\input{content/introduction}
+\clearpage
+\phantomsection
+\tableofcontents
+
+\input{content/preface}
+\input{poem/01}
+\input{poem/02}
+\input{poem/03}
+\input{poem/04}
+\input{poem/05}
+\input{poem/06}
+\input{poem/07}
+\input{poem/08}
+\input{poem/09}
+\input{content/note_one}
+\input{content/note_two}
+\input{content/conclusion}
+\input{content/translator_notes}
+\input{content/sources}
+\end{document}

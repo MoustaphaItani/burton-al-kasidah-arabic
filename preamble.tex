@@ -1,0 +1,116 @@
+% Arabic book typography. The two Amiri fonts are included in this project.
+\usepackage{iftex}
+\ifXeTeX\else
+  \PackageError{BurtonKasidah}{Please compile this project with XeLaTeX}
+    {In Overleaf, choose XeLaTeX as the compiler and main.tex as the main document.}
+\fi
+\usepackage{fontspec}
+\usepackage[a4paper,top=23mm,bottom=24mm,left=23mm,right=23mm]{geometry}
+\usepackage{setspace}
+\usepackage{needspace}
+\usepackage{parskip}
+\usepackage[unicode,pdfencoding=auto]{hyperref}
+\newenvironment{SourceQuotation}{%
+  \begin{quote}
+  \setlength{\parskip}{0pt}%
+}{\end{quote}}
+% Allow a recent bidi package to run with an older LaTeX kernel.
+\makeatletter
+\providecommand\IfClassLoadedT[2]{\@ifclassloaded{#1}{#2}{}}
+\providecommand\IfPackageLoadedT[2]{\@ifpackageloaded{#1}{#2}{}}
+\providecommand\IfPackageLoadedF[2]{\@ifpackageloaded{#1}{}{#2}}
+\providecommand\IfFileLoadedTF[1]{%
+  \expandafter\ifx\csname ver@#1\endcsname\relax
+    \expandafter\@secondoftwo
+  \else
+    \expandafter\@firstoftwo
+  \fi}
+\makeatother
+% Load polyglossia after the packages whose RTL behaviour bidi adapts.
+\usepackage{polyglossia}
+\setdefaultlanguage[numerals=mashriq]{arabic}
+\setotherlanguage{english}
+
+\setmainfont[
+  Path=fonts/,
+  BoldFont=Amiri-Bold.ttf,
+  ItalicFont=Amiri-Regular.ttf,
+  BoldItalicFont=Amiri-Bold.ttf,
+  ItalicFeatures={FakeSlant=0.15},
+  BoldItalicFeatures={FakeSlant=0.15}
+]{Amiri-Regular.ttf}
+\newfontfamily\arabicfont[
+  Path=fonts/,
+  Script=Arabic,
+  Language=Arabic,
+  BoldFont=Amiri-Bold.ttf,
+  ItalicFont=Amiri-Regular.ttf,
+  BoldItalicFont=Amiri-Bold.ttf,
+  ItalicFeatures={FakeSlant=0.15},
+  BoldItalicFeatures={FakeSlant=0.15}
+]{Amiri-Regular.ttf}
+\newfontfamily\englishfont[
+  Path=fonts/,
+  BoldFont=Amiri-Bold.ttf,
+  ItalicFont=Amiri-Regular.ttf,
+  BoldItalicFont=Amiri-Bold.ttf,
+  ItalicFeatures={FakeSlant=0.15},
+  BoldItalicFeatures={FakeSlant=0.15}
+]{Amiri-Regular.ttf}
+
+\hypersetup{
+  pdftitle={قصيدة الحاج عبدو اليزدي: ترجمة عربية أولية},
+  pdfauthor={Richard Francis Burton; preliminary Arabic translation by ChatGPT / OpenAI},
+  pdfsubject={Arabic preliminary translation with historical and editorial notes},
+  pdfdisplaydoctitle=true,
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=black,
+  bookmarksopen=true,
+  bookmarksnumbered=false
+}
+\setstretch{1.22}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65\baselineskip plus 2pt minus 1pt}
+\setlength{\emergencystretch}{2em}
+\tolerance=1600
+\widowpenalty=10000
+\clubpenalty=10000
+\raggedbottom
+\setcounter{tocdepth}{1}
+\renewcommand{\contentsname}{محتويات الكتاب}
+
+% Each substantial source section begins on a fresh page.
+\newcommand{\MajorSection}[1]{%
+  \clearpage
+  \phantomsection
+  \section*{#1}
+  \addcontentsline{toc}{section}{#1}%
+}
+\newcommand{\MinorSection}[1]{%
+  \Needspace{5\baselineskip}
+  \subsection*{#1}%
+}
+
+% A complete couplet and any following Burton gloss stay together.
+% Arguments: Eastern Arabic number, first line, second line, optional gloss.
+\newcommand{\Couplet}[4]{%
+  \par\noindent
+  \begin{minipage}{\linewidth}
+    \setlength{\parskip}{0pt}%
+    \setstretch{1.25}%
+    {\small\bfseries #1}\enspace #2\par
+    #3\par
+    #4%
+  \end{minipage}%
+  \par\vspace{0.45\baselineskip}%
+}
+\newcommand{\BurtonNote}[1]{%
+  \vspace{0.3\baselineskip}%
+  {\small\setstretch{1.15} #1\par}%
+}
+
+% Values recorded by the project initiator for the FIRST Arabic draft.
+% They do not describe the later LaTeX conversion session.
+\newcommand{\RecordedModel}{\textenglish{GPT-6.1 Sol Max}}
+\newcommand{\RecordedDraftTime}{\textenglish{1h 10m 13s}}
