@@ -1,7 +1,15 @@
 # Burton's Kasidah: preliminary Arabic translation
 
-This is a complete, editable LaTeX project for Overleaf, based on the attached
-`Burton_Al_Kasidah_Arabic_Preliminary(1).docx`.
+This is a complete, editable LaTeX project for Overleaf.
+
+[View the current Arabic draft on Overleaf (read-only)](https://www.overleaf.com/read/gyyydcjyfnbs#f61ab8)
+
+## English text
+
+Burton’s English text is available here:
+
+- [Internet Archive — scanned edition](https://archive.org/details/kasidah00burt)
+- [Project Gutenberg — electronic text](https://www.gutenberg.org/ebooks/6036)
 
 ## Compile on Overleaf
 
